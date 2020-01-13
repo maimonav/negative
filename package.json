@@ -23,7 +23,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "test": "jasmine",
     "eject": "react-scripts eject",
     "install:clean": "rm -rf node_modules/ && rm -rf package-lock.json && npm install && npm start",
     "lint:check": "eslint . --ext=js,jsx;  exit 0",
@@ -56,12 +56,15 @@
     "express-pino-logger": "^4.0.0",
     "gulp": "4.0.2",
     "gulp-append-prepend": "1.0.8",
+    "jasmine": "^3.5.0",
     "js-sha256": "^0.9.0",
+    "mysql2": "^2.1.0",
     "node-env-run": "^3.0.2",
     "nodemon": "^2.0.2",
     "npm-run-all": "^4.1.5",
     "pino-colada": "^1.5.0",
-    "prettier": "1.18.2"
+    "prettier": "1.18.2",
+    "sequelize": "^5.21.3"
   },
   "browserslist": {
     "production": [
