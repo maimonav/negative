@@ -1,17 +1,24 @@
-const DataBase = require("./DBManager");
+// const mongoose = require("mongoose");
 
 class CinemaSystem {
   constructor() {
     this.users = new Map();
-    const {User,Employee} = {
-      User:require("./User"),
-      Employee:require("./Employee")
-    };
-    DataBase.init();
-    this.users.set(0, new User(0, "admin", "admin", 'ADMIN'));
-    this.users.set(1, new Employee(1, "manager", "manager", 'MANAGER','Noa','Cohen','0508888888'));
-
+    // this.connectToDB();
+    const User = require("./User");
+    this.users.set(0, new User(0, "admin", "admin", [1, 2, 3]));
   }
+
+  // connectToDB = () => {
+  //   mongoose.connect("mongodb://localhost/db", {
+  //     useUnifiedTopology: true,
+  //     useNewUrlParser: true
+  //   });
+  //   var db = mongoose.connection;
+  //   db.on("error", console.error.bind(console, "connection error:"));
+  //   db.once("open", function() {
+  //     console.log("connected");
+  //   });
+  // };
 
   register(id, userName, password, permissions) {
     if (id in this.users) return "The id is already exists";

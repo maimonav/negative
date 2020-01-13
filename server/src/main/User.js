@@ -1,5 +1,4 @@
-const DataBase = require("./DBManager");
-
+// const { UserDB } = require("./Models");
 class User {
   constructor(id, userName, password, permissions) {
     this.sha256 = require("js-sha256").sha256;
@@ -8,8 +7,19 @@ class User {
     this.password = this.sha256(userName + password);
     this.permissions = permissions;
     this.isLoggedin = false;
-    DataBase.add('user',{ id:id,username:userName, password:password, permissions:permissions});
-    
+    try {
+      // new UserDB({
+      //   _id: id,
+      //   username: userName,
+      //   password: password,
+      //   permissions: permissions
+      // }).save(err => {});
+      // err ? console.error(err) : console.error(`${userName} saved`)
+      // );
+    } catch (error) {}
+
+    //TODO: remove//
+    // UserDB.find((err, users) => (err ? console.log(err) : console.log(users)));
   }
 
   login(userName, password) {
