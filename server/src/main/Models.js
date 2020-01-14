@@ -8,7 +8,8 @@ const userSchema = () => {
     id: {type: Sequelize.INTEGER, primaryKey: true},
     username: {type: Sequelize.STRING, allowNull: false},
     password: {type: Sequelize.STRING, allowNull: false},
-    permissions: {type:Sequelize.ENUM('ADMIN', 'MANAGER','DEPUTY_MANAGER','SHIFT_MANAGER','EMPLOYEE'), allowNull: false,defaultValue: 'EMPLOYEE' }, 
+    permissions: {type:Sequelize.ENUM('ADMIN', 'MANAGER','DEPUTY_MANAGER','SHIFT_MANAGER','EMPLOYEE'), allowNull: false,defaultValue: 'EMPLOYEE' },
+    isUserRemoved: {type: Sequelize.BOOLEAN, defaultValue: false},
   }};
 
   const employeeSchema = (User) => {
@@ -26,6 +27,7 @@ const userSchema = () => {
     firstName: {type: Sequelize.STRING, allowNull: false,isAlpha: true},
     lastName: {type: Sequelize.STRING, allowNull: false,isAlpha: true},
     contactDetails: {type: Sequelize.STRING, allowNull: false},
+    isEmployeeRemoved: {type: Sequelize.BOOLEAN, defaultValue: false},
   }};
 
 

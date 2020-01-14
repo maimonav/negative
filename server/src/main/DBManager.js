@@ -47,7 +47,22 @@ class DataBase {
         return model.sync().then(() => {
             try {
                 return this.sequelize.transaction((t) => {
-                    return model.findByPk(id, { transaction: t });
+                    let res = model.findByPk(id, { transaction: t });
+                    return res;
+                })
+                    .catch((error => console.log(error)));
+            } catch (error) {
+                console.log(error);
+            }
+        });
+    }
+
+    static update(modelName, id , element) {
+        const model = this.models[modelName];
+        return model.sync().then(() => {
+            try {
+                return this.sequelize.transaction((t) => {
+                    return model.update(element, { where: { id: id } ,transaction: t });
                 })
                     .catch((error => console.log(error)));
             } catch (error) {
